@@ -13,7 +13,7 @@ namespace LoggingKata
         {
             if (line == null || line == "")
                 return null;
-            logger.LogInfo("Begin parsing");
+            
 
             // Take your line and use line.Split(',') to split it up into an array of strings, separated by the char ','
             var cells = line.Split(',');
@@ -22,9 +22,15 @@ namespace LoggingKata
             if (cells.Length < 3)
             {
                 // Log that and return null
-                
+                logger.LogInfo("Array is less than length 3");
                 // Do not fail if one record parsing fails, return null
                 return null; // TODO Implement
+            }
+
+            if (cells.Length > 3)
+            {
+                logger.LogInfo("Array is greater than length 3");
+                return null;
             }
 
             // grab the latitude from your array at index 0

@@ -20,6 +20,15 @@ namespace LoggingKata
             // use File.ReadAllLines(path) to grab all the lines from your csv file
             // Log and error if you get 0 lines and a warning if you get 1 line
             var lines = File.ReadAllLines(csvPath);
+            if (lines.Length == 0)
+            {
+                logger.LogError("Zero lines", new NullReferenceException());
+            }
+
+            if (lines.Length == 1)
+            {
+                logger.LogWarning("You are only entering one line.");
+            }
 
             logger.LogInfo($"Lines: {lines[0]}");
 
@@ -48,6 +57,8 @@ namespace LoggingKata
             // Create a new corA Coordinate with your locA's lat and long
             // Now, do another loop on the locations with the scope of your first loop, so you can grab the "destination" location (perhaps: `locB`)
             // Create a new Coordinate with your locB's lat and long
+            logger.LogInfo("Finding the distances between any two Taco Bell locations, and returning the greatest distance to find which" +
+                " two Taco Bell locations are the farthest from each other.");
             for (int i = 0; i < locations.Length; i++)
             {
                 var locA = locations[i];
