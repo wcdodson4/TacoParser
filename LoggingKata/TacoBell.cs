@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using GeoCoordinatePortable;
 
 namespace LoggingKata
 {
@@ -10,27 +11,10 @@ namespace LoggingKata
         {
 
         }
-        public string Name 
-        {
-            get
-            {
-                return Name;
-            }  
-            set
-            {
-                value = Name;
-            }
-        }
-        public Point Location
-        {
-            get
-            {
-                return Location;
-            }   
-            set
-            {
-                value = Location;
-            }
-        }
+        public string Name { get; set; }
+        public Point Location { get; set; }
+       
+
+      
     }
 }

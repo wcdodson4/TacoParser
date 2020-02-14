@@ -32,17 +32,41 @@ namespace LoggingKata
             // DON'T FORGET TO LOG YOUR STEPS
             // Grab the path from the name of your file
 
+
             // Now, here's the new code
 
             // Create two `ITrackable` variables with initial values of `null`. These will be used to store your two taco bells that are the furthest from each other.
+            var A = new TacoBell();
+            var B = new TacoBell();
+            A = null;
+            B = null;
             // Create a `double` variable to store the distance
+            double distance = 0;
 
             // Include the Geolocation toolbox, so you can compare locations: `using GeoCoordinatePortable;`
             // Do a loop for your locations to grab each location as the origin (perhaps: `locA`)
             // Create a new corA Coordinate with your locA's lat and long
-
             // Now, do another loop on the locations with the scope of your first loop, so you can grab the "destination" location (perhaps: `locB`)
             // Create a new Coordinate with your locB's lat and long
+            for (int i = 0; i < locations.Length; i++)
+            {
+                var locA = locations[i];
+                var corA = new GeoCoordinate(locA.Location.Latitude, locA.Location.Longitude);
+                for(int j = 0; j < locations.Length; j++)
+                {
+                    var locB = locations[j];
+                    var corB = new GeoCoordinate(locB.Location.Latitude, locB.Location.Longitude);
+                    var testDistance = corA.GetDistanceTo(corB);
+                    if (testDistance > distance)
+                    {
+                        distance = testDistance;
+                        A = (TacoBell)locA;
+                        B = (TacoBell)locB;
+                    }
+                }
+            }
+            Console.WriteLine($"The two Taco Bells farthest away from each other are {A.Name} and {B.Name}, which are" +
+                $" {Math.Round((distance * 0.0006213710), 1)} miles apart from each other.");
             
             // Now, compare the two using `.GetDistanceTo()`, which returns a double
             // If the distance is greater than the currently saved distance, update the distance and the two `ITrackable` variables you set above

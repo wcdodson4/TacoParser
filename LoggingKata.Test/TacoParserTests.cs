@@ -43,13 +43,13 @@ namespace LoggingKata.Test
         {
             // TODO: Complete Should Fail Parse
             //Arrange
-            
+            var tacoParser = new TacoParser();
 
             //Act
-            
+            var actual = tacoParser.Parse(str);
 
             //Assert
-        
+            Assert.Null(actual);
         }
     }
 }
