@@ -20,8 +20,8 @@ namespace LoggingKata.Test
         }
 
         [Theory]
-        [InlineData("34.073638, -84.677017, Taco Bell Acwort...", 34.073638, -84.677017, "Taco Bell Acwort...")]
-        public void ShouldParse(string str, double expectedLong, double expectedLat, string expectedName)
+        [InlineData("34.073638,-84.677017,Taco Bell Acwort...", 34.073638, -84.677017, "Taco Bell Acwort...")]
+        public void ShouldParse(string str, double expectedLat, double expectedLong, string expectedName)
         {
             // TODO: Complete Should Parse
             //Arrange
